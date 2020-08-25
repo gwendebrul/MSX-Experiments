@@ -1,0 +1,26 @@
+10 REM Hello World
+20 REM
+30 REM by Gwen De Brul
+40 REM
+50 SCREEN 0
+60 ST=49152
+70 L=&H1B
+80 FOR I=0 TO L
+90 READ A$
+110 POKE ST+I,VAL("&H"+A$)
+120 NEXT I
+130 DEF USR=&HC000
+140 USR0(0)
+150 data 21,11,C0	       	: '		ld hl,MESG
+160 data 7E			:'loop:	ld a, (hl)
+170 data FE,00		:'		cp 00
+180 data CA,11,C0		:'		jp  z, end
+190 data CD,A2,00		:'		call CHPUT			:'0x00A2
+200 data 23			:'		inc hl
+210 data C3,03,C0		:'		jp loop
+220 data C9 			:'end:	ret
+
+
+230 REM db MESG "Hello World!",0
+240 REM DEC data 72,101,108,108,111,32,87,111,114,108,100,33,255
+250 data 48,65,6c,6c,6f,20,57,6f,72,6c,64,21,0
