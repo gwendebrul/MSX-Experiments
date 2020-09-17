@@ -17,15 +17,15 @@ A mandotory program when learning programming or a new language.
     110 POKE ST+I,VAL("&H"+A$)
     120 NEXT I
     130 DEF USR=&HC000
-    140 USR0(0)
-    150 data 21,0F,C0	       	: '		ld   hl,MESG
+    140 X=USR0(0)
+    150 data 21,0F,C0	       	: '		    ld   hl,MESG
     160 data 7E			:'        loop:	ld a, (hl)
-    170 data FE,00		:'      		cp 00
-    180 data 28,06		:'   		    jr  z, end
-    190 data CD,A2,00		:'   		call CHPUT		 	:'0x00A2
-    200 data 23			    :'          inc hl
-    210 data 18,F5		:'   	      	jr loop
-    220 data C9 			:'     end:	ret
+    170 data FE,00		:'      		    cp 00
+    180 data 28,06		:'   		        jr  z, end
+    190 data CD,A2,00		:'   		    call CHPUT		 	:'0x00A2
+    200 data 23			    :'             inc hl
+    210 data 18,F5		:'   	      	    jr loop
+    220 data C9 			:'        end:	    ret
 
 
     230 REM db MESG "Hello World!",0
