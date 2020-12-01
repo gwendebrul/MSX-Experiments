@@ -18,20 +18,30 @@ A mandotory program when learning programming or a new language.
     120 NEXT I
     130 DEF USR=&HC000
     140 X=USR0(0)
-    150 data 21,0F,C0	:'	    ld   hl,MESG
-    160 data 7E			:'loop:	ld a, (hl)
-    170 data FE,00		:'     cp 00
-    180 data 28,06		:'     jr  z, end
-    190 data CD,A2,00	:'     call CHPUT		 	:'0x00A2
-    200 data 23			:'     inc hl
-    210 data 18,F5		:'     jr loop
-    220 data C9 			:'end:	ret
+    150 data 21,0F,C0
+    160 data 7E			
+    170 data FE,00		
+    180 data 28,06		
+    190 data CD,A2,00	
+    200 data 23			
+    210 data 18,F5		
+    220 data C9 			
 
 
     230 REM db MESG "Hello World!",0
     240 REM DEC data 72,101,108,108,111,32,87,111,114,108,100,33,255
     250 data 48,65,6c,6c,6f,20,57,6f,72,6c,64,21,0
 
+## Assembly
+
+                ld hl, MESG
+        loop:   ld a, (hl)
+                cp 0
+                jr z, end
+                call 0x00A2     :' CHPUT BIOS CALL
+                inc hl
+                jr loop
+        end:    ret
 ## Short explanation
 
 Line 10 - 140 contains the BASIC loader to put the Machine Language code into memory &hC000
