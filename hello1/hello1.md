@@ -20,7 +20,7 @@ A mandotory program when learning programming or a new language.
     140 X=USR0(0)
     150 data 21,0F,C0
     160 data 7E			
-    170 data FE,00		
+    170 data FE,FF		
     180 data 28,06		
     190 data CD,A2,00	
     200 data 23			
@@ -30,13 +30,13 @@ A mandotory program when learning programming or a new language.
 
     230 REM db MESG "Hello World!",0
     240 REM DEC data 72,101,108,108,111,32,87,111,114,108,100,33,255
-    250 data 48,65,6c,6c,6f,20,57,6f,72,6c,64,21,0
+    250 data 48,65,6c,6c,6f,20,57,6f,72,6c,64,21,ff
 
 ## Assembly
 
                 ld hl, MESG
         loop:   ld a, (hl)
-                cp 0
+                cp 0xFF
                 jr z, end
                 call 0x00A2     :' CHPUT BIOS CALL
                 inc hl
