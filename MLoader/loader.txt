@@ -1,0 +1,13 @@
+10 REM ML Loader
+20 REM
+30 REM by Gwen De Brul
+40 REM
+50 SCREEN 0
+60 ST=49152 ' This is the address where the ML program should be loaded in memory
+70 L=&H1B   ' this is the number of bytes the program is in size (-1)
+80 FOR I=0 TO L
+90 READ A$
+110 POKE ST+I,VAL("&H"+A$)
+120 NEXT I
+130 DEF USR=&HC000
+140 USR0(0)
